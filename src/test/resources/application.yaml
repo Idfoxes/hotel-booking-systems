@@ -1,0 +1,33 @@
+spring:
+  main:
+    allow-circular-references: true
+  kafka:
+    bootstrap-servers: localhost:9092
+  application:
+    name: HostelBooking
+
+  jpa:
+    generate-ddl: true
+    open-in-view: true
+  datasource:
+    url: jdbc:postgresql://localhost:5435/hotelBooking
+    username: postgres
+    password: postgres
+    hikari:
+      schema: booking
+      connection-init-sql: create schema if not exists booking
+      connection-timeout: 10000
+
+  data:
+    mongodb:
+      uri: mongodb://root:root@localhost:27017/bookingEvents?authSource=admin
+
+app:
+  kafka:
+    kafkaMessageRegisterTopic: "register-topic"
+    kafkaMessageNewBookingTopic: "new-booking-topic"
+    kafkaMessageGroupId: "kafka-message-group-id"
+
+server:
+  port: 8088
+
